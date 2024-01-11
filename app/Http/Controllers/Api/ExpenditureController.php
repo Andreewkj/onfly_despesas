@@ -8,5 +8,19 @@ use Illuminate\Http\Request;
 
 class ExpenditureController extends Controller
 {
-    
+    public function store()
+    {
+        // try {
+        //     $realState = $this->realState->create($data);
+
+        //     return response()->json([
+        //         'data' => [
+        //             'msg' => 'Despesa cadastrada com sucesso!'
+        //         ]
+        //     ], 200);
+        // } catch (\Exception $e) {
+        //     //$message = new ApiMessages($e->getMessage());
+        //     //return response()->json([$message->getMessage()], 401);
+        // }
+    }
 }
