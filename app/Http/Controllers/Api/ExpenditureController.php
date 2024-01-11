@@ -8,14 +8,4 @@ use Illuminate\Http\Request;
 
 class ExpenditureController extends Controller
 {
-    protected $fillable = [
-        'user_id',
-        'description',
-        'value',
-    ];
-
-    public function User()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
