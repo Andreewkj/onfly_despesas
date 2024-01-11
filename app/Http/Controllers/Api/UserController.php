@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,8 +21,8 @@ class UserController extends Controller
         $data = $request->all();
 
         if (!$request->has('password') || $request->getPassword('password')) {
-            //$message = new ApiMessages('Password required');
-            //return response()->json([$message->getMessage()], 401);
+            $message = new ApiMessages('Password required');
+            return response()->json([$message->getMessage()], 401);
         }
 
         try {
@@ -34,8 +35,8 @@ class UserController extends Controller
                 ]
             ], 200);
         } catch (\Exception $e) {
-            // $message = new ApiMessages($e->getMessage());
-            // return response()->json([$message->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 401);
         }
     }
 }
