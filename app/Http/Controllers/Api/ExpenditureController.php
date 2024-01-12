@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
 use App\Models\Expenditure;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class ExpenditureController extends Controller
@@ -26,8 +27,9 @@ class ExpenditureController extends Controller
     public function show($id)
     {
         try {
-            $user = auth('api')->user();
-            $expenditure = $user->expenditure()->with('user')->findOrfail($id);
+            $expenditure = $this->expenditure->findOrfail($id);
+
+            $this->authorize('update', [$expenditure]);
 
             return response()->json([
                 'data' => $expenditure
@@ -63,8 +65,9 @@ class ExpenditureController extends Controller
         $data = $request->all();
 
         try {
-            $user = auth('api')->user();
-            $expenditure = $user->expenditure()->findOrfail($id);
+            $expenditure = $this->expenditure->findOrfail($id);
+
+            $this->authorize('update', [$expenditure]);
 
             $expenditure->update($data);
 
@@ -73,17 +76,24 @@ class ExpenditureController extends Controller
                     'msg' => 'Despesa atualizada com sucesso!'
                 ]
             ], 200);
+        } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 403);
+        } catch (ModelNotFoundException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 404);
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
             return response()->json([$message->getMessage()], 401);
         }
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         try {
-            $user = auth('api')->user();
-            $expenditure = $user->expenditure()->findOrfail($id);
+            $expenditure = $this->expenditure->findOrfail($id);
+
+            $this->authorize('delete', [$expenditure]);
 
             $expenditure->delete();
 

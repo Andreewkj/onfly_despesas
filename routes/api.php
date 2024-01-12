@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
+    Route::post('/user', [UserController::class, 'store']);
+    Route::get('/user', [UserController::class, 'index']);
+
     Route::post('login', [LoginJwtController::class, 'login'])->name('login');
     Route::get('logout', [LoginJwtController::class, 'logout'])->name('logout');
 
-    Route::middleware('jwt.auth')->group(function () {
-        Route::post('/user', [UserController::class, 'store']);
-        Route::get('/user', [UserController::class, 'index']);
-    
+    Route::middleware('jwt.auth')->group(function () {    
         Route::resource('expenditure', ExpenditureController::class);
     });
 });
