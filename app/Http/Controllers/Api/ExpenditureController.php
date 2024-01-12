@@ -24,9 +24,9 @@ class ExpenditureController extends Controller
     {
         try {
             $expenditures = auth('api')->user()->expenditure()->paginate('10');
-            $expenditureResource = new ExpenditureCollection($expenditures);
+            $expenditureResources = new ExpenditureCollection($expenditures);
 
-            return Response()->json($expenditureResource, 200);
+            return Response()->json($expenditureResources, 200);
 
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
@@ -41,8 +41,10 @@ class ExpenditureController extends Controller
 
             $this->authorize('update', [$expenditure]);
 
+            $expenditureResource = new ExpenditureResource($expenditure);
+
             return response()->json([
-                'data' => $expenditure
+                'data' => $expenditureResource
             ], 200);
         } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
             $message = new ApiMessages($e->getMessage());
