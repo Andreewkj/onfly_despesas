@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Api\ApiMessages;
+
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ExpenditureCollection;
+use App\Http\Resources\ExpenditureResource;
 use App\Models\Expenditure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -19,9 +22,16 @@ class ExpenditureController extends Controller
 
     public function index()
     {
-        $expenditures = auth('api')->user()->expenditure()->paginate('10');
+        try {
+            $expenditures = auth('api')->user()->expenditure()->paginate('10');
+            $expenditureResource = new ExpenditureCollection($expenditures);
 
-        return Response()->json($expenditures, 200);
+            return Response()->json($expenditureResource, 200);
+
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 400);
+        }
     }
 
     public function show($id)
@@ -34,9 +44,15 @@ class ExpenditureController extends Controller
             return response()->json([
                 'data' => $expenditure
             ], 200);
+        } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 403);
+        } catch (ModelNotFoundException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 404);
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
-            return response()->json([$message->getMessage()], 401);
+            return response()->json([$message->getMessage()], 400);
         }
     }
 
@@ -56,7 +72,7 @@ class ExpenditureController extends Controller
             ], 200);
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
-            return response()->json([$message->getMessage()], 401);
+            return response()->json([$message->getMessage()], 400);
         }
     }
 
@@ -84,7 +100,7 @@ class ExpenditureController extends Controller
             return response()->json([$message->getMessage()], 404);
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
-            return response()->json([$message->getMessage()], 401);
+            return response()->json([$message->getMessage()], 400);
         }
     }
 
@@ -102,9 +118,15 @@ class ExpenditureController extends Controller
                     'msg' => 'Despesa removida com sucesso!'
                 ]
             ], 200);
+        } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 403);
+        } catch (ModelNotFoundException $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json([$message->getMessage()], 404);
         } catch (\Exception $e) {
             $message = new ApiMessages($e->getMessage());
-            return response()->json([$message->getMessage()], 401);
+            return response()->json([$message->getMessage()], 400);
         }
     }
 }
