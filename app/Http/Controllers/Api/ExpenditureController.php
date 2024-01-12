@@ -8,8 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ExpenditureCollection;
 use App\Http\Resources\ExpenditureResource;
 use App\Models\Expenditure;
+use App\Notifications\NewExpenditure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ExpenditureController extends Controller
 {
@@ -39,7 +41,7 @@ class ExpenditureController extends Controller
         try {
             $expenditure = $this->expenditure->findOrfail($id);
 
-            $this->authorize('update', [$expenditure]);
+            $this->authorize('view', [$expenditure]);
 
             $expenditureResource = new ExpenditureResource($expenditure);
 
@@ -63,9 +65,13 @@ class ExpenditureController extends Controller
         try {
             $data = $request->all();
 
-            $data['user_id'] = auth('api')->user()->id;
+            $user = auth('api')->user();
+
+            $data['user_id'] = $user->id;
 
             $this->expenditure->create($data);
+
+            Notification::send($user, new NewExpenditure($user));
 
             return response()->json([
                 'data' => [
