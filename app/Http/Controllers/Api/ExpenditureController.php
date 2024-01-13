@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ExpenditureController extends Controller
 {
-    private $expenditure;
+    private ?Expenditure $expenditure;
 
-    public function __construct(Expenditure $expenditure)
+    public function __construct(?Expenditure $expenditure = null)
     {
         $this->expenditure = $expenditure;
     }
@@ -123,7 +123,7 @@ class ExpenditureController extends Controller
         }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         try {
             $expenditure = $this->expenditure->findOrfail($id);
