@@ -12,6 +12,7 @@ use App\Notifications\NewExpenditure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class ExpenditureController extends Controller
 {
@@ -64,6 +65,11 @@ class ExpenditureController extends Controller
     {
         try {
             $data = $request->all();
+            
+            Validator::make($data, [
+                'description' => 'required|string|max:191',
+                'value' => 'required|decimal:2|between:0,99999999.99'
+            ])->validate();
 
             $user = auth('api')->user();
 
@@ -86,9 +92,14 @@ class ExpenditureController extends Controller
 
     public function update($id, Request $request)
     {
-        $data = $request->all();
-
         try {
+            $data = $request->all();
+
+            Validator::make($data, [
+                'description' => 'required|string|max:191',
+                'value' => 'required|decimal:2|between:0,99999999.99'
+            ])->validate();
+
             $expenditure = $this->expenditure->findOrfail($id);
 
             $this->authorize('update', [$expenditure]);

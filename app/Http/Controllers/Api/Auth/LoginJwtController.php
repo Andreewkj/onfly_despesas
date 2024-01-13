@@ -14,7 +14,7 @@ class LoginJwtController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         Validator::make($credentials, [
-            'email' => 'required|string',
+            'email' => 'required|email',
             'password' => 'required|string'
         ])->validate();
 
