@@ -22,6 +22,7 @@ Foi usado a biblioteca [tymondesigns/jwt-auth](https://github.com/tymondesigns/j
 > [!TIP]
 > Vou deixar o curl das rotas para facilitar na montagem do ambiente
 ### User
+
 **Create** <br>
 curl --request POST \
   --url http://localhost/api/v1/user \
@@ -31,13 +32,14 @@ curl --request POST \
 	"email": "fulanaawo@gmail.com",
 	"password": "123456"
 }'
-<br>
+<br><br>
 **List** <br>
 curl --request GET \
   --url http://localhost/api/v1/user
-<br>
+<br><br>
 
 ### Auth
+
 **Login** <br>
 curl --request POST \
   --url http://localhost/api/v1/login \
@@ -46,13 +48,54 @@ curl --request POST \
 	"email": "fulano@gmail.com",
 	"password": "123456"
 }'
-<br>
+<br><br>
 **Logout** <br>
 curl --request GET \
   --url http://localhost/api/v1/logout \
   --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8'
+<br><br>
 
+### Expenditure
 
+**Create** <br>
+curl --request POST \
+  --url http://localhost/api/v1/expenditure \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"description" : "Creatina 600gr",
+	"value": 132.89
+}'
+<br><br>
+
+**Update** <br>
+curl --request PUT \
+  --url http://localhost/api/v1/expenditure/1 \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"description" : "Creatina 800gr",
+	"value": "229.89"
+}'
+<br><br>
+
+**Delete** <br>
+curl --request DELETE \
+  --url http://localhost/api/v1/expenditure/49 \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8'
+<br><br>
+
+**List** <br>
+curl --request GET \
+  --url http://localhost/api/v1/expenditure/ \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8'
+<br><br>
+
+**Show** <br>
+curl --request GET \
+  --url http://localhost/api/v1/expenditure/1 \
+  --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8'
+<br><br>
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
