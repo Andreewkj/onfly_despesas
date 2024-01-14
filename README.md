@@ -7,7 +7,7 @@ git clone https://github.com/Andreewkj/onfly_despesas.git
 Renomear o .env.exemple para .env <br>
 trocar o valor de queue_connectin para database -> QUEUE_CONNECTION=database <br>
 
-Vá até o site https://mailtrap.io/ e crie uma conta gratuita.
+Vá até o site https://mailtrap.io/ e crie uma conta gratuita.<br>
 Depois vá até Testing>inboxes>myinbox>SMTP Settings selecione laravel 9+ na listagem de integrações e cole o conteudo no .env do projeto.
 <br>
 
