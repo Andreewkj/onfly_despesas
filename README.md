@@ -1,10 +1,10 @@
-## Sobre o projeto
+# Sobre o projeto
 
 O projeto foi desenvolvido para o teste técnico da empresa Onfly. <br>
 O objetivo do projeto é criar uma api onde o usuário possa registrar seus gastos e também manipular esses dados através das operações de CRUD.
 
 Framework do projeto <br>
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="80" alt="Laravel Logo"></a></p>
+<p align="left"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120" alt="Laravel Logo"></a></p>
 
 ## Entidades criadas
 
