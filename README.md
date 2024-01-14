@@ -20,8 +20,8 @@ MAIL_PASSWORD=1dcbd2d9703325
 ```
 <br>
 
+Configurar as variáveis do banco de dados
 ```bash
-Configurar o do banco de dados
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
