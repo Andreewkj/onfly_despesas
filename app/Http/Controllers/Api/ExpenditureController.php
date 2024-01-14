@@ -196,7 +196,7 @@ class ExpenditureController extends Controller
      *                   ),
      *                   @OA\Property(
      *                       property="value",
-     *                       type="required|decimal:2|between:0,99999999.99",
+     *                       type="required|decimal:2|numeric|between:0,99999999.99",
      *                   ),
      *                 example={"description": "Creatina 300gr", "value": 123456.78}
      *             )
@@ -241,7 +241,7 @@ class ExpenditureController extends Controller
             
             Validator::make($data, [
                 'description' => 'required|string|max:191',
-                'value' => 'required|decimal:2|between:0,99999999.99'
+                'value' => 'required|decimal:2|numeric|between:0,99999999.99'
             ])->validate();
 
             $user = auth('api')->user();
@@ -258,7 +258,7 @@ class ExpenditureController extends Controller
                 ]
             ], 200);
         } catch (\Exception $e) {
-            $message = new ApiMessages($e->getMessage());
+            $message = new ApiMessages($e->getMessage(), $e->errors());
             return response()->json([$message->getMessage()], 400);
         }
     }
@@ -286,7 +286,7 @@ class ExpenditureController extends Controller
      *                   ),
      *                   @OA\Property(
      *                       property="value",
-     *                       type="required|decimal:2|between:0,99999999.99",
+     *                       type="required|decimal:2|numeric|between:0,99999999.99",
      *                   ),
      *                 example={"description": "Creatina 300gr", "value": 123456.78}
      *             )
@@ -331,7 +331,7 @@ class ExpenditureController extends Controller
 
             Validator::make($data, [
                 'description' => 'required|string|max:191',
-                'value' => 'required|decimal:2|between:0,99999999.99'
+                'value' => 'required|decimal:2|numeric|between:0,99999999.99'
             ])->validate();
 
             $expenditure = $this->expenditure->findOrfail($id);
@@ -352,7 +352,7 @@ class ExpenditureController extends Controller
             $message = new ApiMessages($e->getMessage());
             return response()->json([$message->getMessage()], 404);
         } catch (\Exception $e) {
-            $message = new ApiMessages($e->getMessage());
+            $message = new ApiMessages($e->getMessage(), $e->errors());
             return response()->json([$message->getMessage()], 400);
         }
     }

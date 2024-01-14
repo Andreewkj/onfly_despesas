@@ -6,6 +6,7 @@ use App\Api\ApiMessages;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -132,7 +133,7 @@ class UserController extends Controller
      *         }
      *     ),
      *     @OA\Response(
-     *          response="401", 
+     *          response="400", 
      *          description="Unauthorized"
      *      ),
      * )
@@ -141,10 +142,11 @@ class UserController extends Controller
     {
         $data = $request->all();
 
-        if (!$request->has('password') || $request->getPassword('password')) {
-            $message = new ApiMessages('Password required');
-            return response()->json([$message->getMessage()], 401);
-        }
+        Validator::make($data, [
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+            'password' => 'required|string'
+        ])->validate();
 
         try {
             $data['password'] = bcrypt($data['password']);
@@ -156,8 +158,8 @@ class UserController extends Controller
                 ]
             ], 200);
         } catch (\Exception $e) {
-            $message = new ApiMessages($e->getMessage());
-            return response()->json([$message->getMessage()], 401);
+            $message = new ApiMessages($e->getMessage(), $e->errors());
+            return response()->json([$message->getMessage()], 400);
         }
     }
 }
