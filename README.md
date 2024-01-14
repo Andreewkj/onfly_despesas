@@ -16,10 +16,7 @@ Cada usuario pode registrar varias criações de desdepesas e toda despesa pode 
 Foi escolhida a palavra 'Expenditure' pois a palavra 'Expense' acaba remetendo a um gasto e Expenditure se encaixa mais como despesa, como água e Luz por exemplo.<br>
 
 ## Autentificação
-Foi usado a biblioteca 'tymondesigns/jwt-auth' na versão 2.0
-```bash
-https://github.com/tymondesigns/jwt-auth
-```
+Foi usado a biblioteca '[tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)' na versão 2.0 
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
