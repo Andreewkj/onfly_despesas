@@ -1,7 +1,8 @@
 # Sobre o projeto
 
 O projeto foi desenvolvido para o teste técnico da empresa Onfly. <br>
-O objetivo do projeto é criar uma api onde o usuário possa registrar seus gastos e também manipular esses dados através das operações de CRUD.
+O objetivo do projeto é criar uma api onde o usuário possa registrar seus gastos e também manipular esses dados através das operações de CRUD.<br>
+This is a challenge by Coodesh
 
 Framework do projeto <br>
 <p align="left"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120" alt="Laravel Logo"></a></p>
@@ -13,6 +14,12 @@ Expenditure e User.<br>
 Cada usuario pode registrar varias criações de desdepesas e toda despesa pode ter apenas um usuário.<br>
 
 Foi escolhida a palavra 'Expenditure' pois a palavra 'Expense' acaba remetendo a um gasto e Expenditure se encaixa mais como despesa, como água e Luz por exemplo.<br>
+
+## Autentificação
+Foi usado a biblioteca 'tymondesigns/jwt-auth' na versão 2.0
+```bash
+https://github.com/tymondesigns/jwt-auth
+```
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
