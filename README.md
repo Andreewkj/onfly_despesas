@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-O projeto foi desenvolvido para o teste técnico da empresa Onfly.
+O projeto foi desenvolvido para o teste técnico da empresa Onfly. <br>
 O objetivo do projeto é criar uma api onde o usuário possa registrar seus gastos e também manipular esses dados através das operações de CRUD.
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
