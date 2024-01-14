@@ -1,3 +1,63 @@
+# Configuração do Projeto
+Faça o download do projeto <br>
+git clone https://github.com/Andreewkj/onfly_despesas.git
+
+## Configuração .env
+
+Renomear o .env.exemple para .env <br>
+trocar o valor de queue_connectin para database -> QUEUE_CONNECTION=database <br>
+
+Vá até o site https://mailtrap.io/ e crie uma conta gratuita.
+Depois vá até Testing>inboxes>myinbox>SMTP Settings selecione laravel 9+ na listagem de integrações e cole o conteudo no .env do projeto.
+<br>
+
+```bash
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=b3efe82420bbf1
+MAIL_PASSWORD=1dcbd2d9703325
+```
+<br>
+
+```bash
+Configurar o do banco de dados
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=onfly_despesas
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+## Configuração Sail
+
+Rodar este comando para instalar as dependências
+e fazer o bind do volume com o container.
+
+```bash
+docker run --rm --interactive --tty \
+  --volume $PWD:/app \
+  --user $(id -u):$(id -g) \
+  composer install
+```
+
+Suba o sail
+
+```bash
+./vendor/bin/sail up -d
+```
+##Configuração JWT
+
+Rode o comando ```./vendor/bin/sail artisan jwt:secret``` para que a autentificação seja configurada no projeto
+
+## Banco de dados
+
+Execute o comando para rodar as migrations
+```bash
+./vendor/bin/sail artisan migrate
+```
+
 # Sobre o projeto
 
 O projeto foi desenvolvido para o teste técnico da empresa Onfly. <br>
