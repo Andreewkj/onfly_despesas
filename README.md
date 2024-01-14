@@ -19,6 +19,8 @@ Foi escolhida a palavra 'Expenditure' pois a palavra 'Expense' acaba remetendo a
 Foi usado a biblioteca [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth) na versão 2.0 
 
 ## Roteirização
+> [!TIP]
+> Vou deixar o curl das rotas para facilitar na montagem do ambiente
 ### Auth
 **Login** <br>
 curl --request POST \
