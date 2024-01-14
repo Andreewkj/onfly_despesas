@@ -97,44 +97,17 @@ curl --request GET \
   --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS92MS9sb2dpbiIsImlhdCI6MTcwNTIwNjIyMCwiZXhwIjoxNzA1MjA5ODIwLCJuYmYiOjE3MDUyMDYyMjAsImp0aSI6InFKVmhaVEh1bG9pajdzeXMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.1GpuTbxbxjLdPNrLnFuCcUOsYXXCz6P_LR88PLe9tx8'
 <br><br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Swagger
+Para uma documentação mais completa da Api foi implementado o Swagger, onde é possível ver as rotas e fazer os testes das mesmas. <br>
+Foi usado a biblioteca [DarkaOnLine/L5-Swagger]([https://github.com/tymondesigns/jwt-auth](https://github.com/DarkaOnLine/L5-Swagger)) na versão 3.0 <br>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![image](https://github.com/Andreewkj/onfly_despesas/assets/62602623/e3a11992-5eab-4449-921e-41a573e67541)
+Assim que o projeto estiver rodando a documentação estará disponível no link http://localhost/api/documentation. <br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Email
+Assim que uma despesa é cadastrada pela rota de criação, um email é armazenado no banco em uma fila e será necessário rodar o comando 'sail artisan queue:work --tries=3' para que o email seja desparado.
+Para realizar o teste do email basta entrar no site https://mailtrap.io/ e com um usuário logado ir até Email Testing>inboxes>myinbox>SMTP Settings selecione laravel 9+ na listagem de integrações e cole o conteudo no .env do projeto.
+![image](https://github.com/Andreewkj/onfly_despesas/assets/62602623/03f7da84-72c1-403c-8cf6-3c25b89e73f2)
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[MIT license](https://opensource.org/licenses/MIT).
