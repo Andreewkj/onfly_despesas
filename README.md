@@ -21,6 +21,22 @@ Foi usado a biblioteca [tymondesigns/jwt-auth](https://github.com/tymondesigns/j
 ## Roteirização
 > [!TIP]
 > Vou deixar o curl das rotas para facilitar na montagem do ambiente
+### User
+**Create** <br>
+curl --request POST \
+  --url http://localhost/api/v1/user \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"name" : "Fulano de taeal",
+	"email": "fulanaawo@gmail.com",
+	"password": "123456"
+}'
+<br>
+**List** <br>
+curl --request GET \
+  --url http://localhost/api/v1/user
+<br>
+
 ### Auth
 **Login** <br>
 curl --request POST \
