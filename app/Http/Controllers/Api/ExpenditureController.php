@@ -198,7 +198,10 @@ class ExpenditureController extends Controller
      *                       property="value",
      *                       type="required|decimal:2|numeric|between:0,99999999.99",
      *                   ),
-     *                 example={"description": "Creatina 300gr", "value": 123456.78}
+     *                 example={
+     *                      "description": "Creatina 300gr",
+     *                      "value": "123456.78"
+     *                  }
      *             )
      *         )
      *     ),
