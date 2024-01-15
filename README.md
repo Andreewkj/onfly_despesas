@@ -165,12 +165,12 @@ Foi usado a biblioteca [DarkaOnLine/L5-Swagger]([https://github.com/tymondesigns
 Assim que o projeto estiver rodando a documentação estará disponível no link http://localhost/api/documentation. <br>
 
 ## Email
-Assim que uma despesa é cadastrada pela rota de criação, um email é armazenado no banco em uma fila e será necessário rodar o comando 'sail artisan queue:work --tries=3' para que o email seja desparado.
-
+Assim que uma despesa é cadastrada pela rota de criação, um email é armazenado no banco em uma fila e será necessário rodar o comando 'sail artisan queue:work --tries=3' para que o email seja desparado. <br>
+![image](https://github.com/Andreewkj/onfly_despesas/assets/62602623/03f7da84-72c1-403c-8cf6-3c25b89e73f2)
+<br>
 ## Testes unitários
 Os testes unitários foram feitos com o TesCase do próprio Laravel e estão cobrindo o cenário principal do CRUD de Expenditure.
 Para realizar o teste do email basta entrar no site https://mailtrap.io/ e com um usuário logado ir até Email Testing>inboxes>myinbox>SMTP Settings selecione laravel 9+ na listagem de integrações e cole o conteudo no .env do projeto.
-![image](https://github.com/Andreewkj/onfly_despesas/assets/62602623/03f7da84-72c1-403c-8cf6-3c25b89e73f2)
 
 ## License
 [MIT license](https://opensource.org/licenses/MIT).
