@@ -171,6 +171,8 @@ Assim que uma despesa é cadastrada pela rota de criação, um email é armazena
 ## Testes unitários
 Os testes unitários foram feitos com o TesCase do próprio Laravel e estão cobrindo o cenário principal do CRUD de Expenditure.
 Para realizar o teste do email basta entrar no site https://mailtrap.io/ e com um usuário logado ir até Email Testing>inboxes>myinbox>SMTP Settings selecione laravel 9+ na listagem de integrações e cole o conteudo no .env do projeto.
+<br>
+Os testes podem ser feitos através do comando ```./vendor/bin/sail artisan test```
 
 ## License
 [MIT license](https://opensource.org/licenses/MIT).
