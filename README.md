@@ -47,7 +47,7 @@ Suba o sail
 ```bash
 ./vendor/bin/sail up -d
 ```
-##Configuração JWT
+## Configuração JWT
 
 Rode o comando ```./vendor/bin/sail artisan jwt:secret``` para que a autentificação seja configurada no projeto
 
